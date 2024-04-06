@@ -1,0 +1,40 @@
+openapi: '3.0.2'
+info:
+  title: API Title
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /pets:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pets'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad request
+components:
+  schemas:
+    pets:
+      type: object
+      required:
+        - "name"
+        - "ownerName"
+      properties:
+        name:
+          description: name of this pet
+          type: string
+          example: "Marmalade"
+        age:
+          description: age of this pet
+          type: number
+          example: 2
+        ownerName:
+          description: owner name of this pet
+          type: string
+          example: 'Michael'
